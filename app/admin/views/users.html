@@ -1,0 +1,65 @@
+<div class="container">
+    <table class="table table-striped table-bordered users-table">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Login</th>
+                <th>Admin</th>
+                <th>Zleceniobiorca</th>
+                <th>Zleceniodawca</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+
+                <td ng-switch="mode[$index]">
+                    <span ng-switch-default ng-bind="user.first_name"></span>
+                    <input ng-switch-when="edit" ng-model="user.first_name" type="text">
+                </td>
+
+                <td ng-switch="mode[$index]">
+                    <span ng-switch-default ng-bind="user.last_name"></span>
+                    <input ng-switch-when="edit" ng-model="user.last_name" type="text">
+                </td>
+
+                <td ng-switch="mode[$index]">
+                    <span ng-switch-default ng-bind="user.login"></span>
+                    <input ng-switch-when="edit" ng-model="user.login" type="text">
+                </td>
+
+                <td ng-switch="mode[$index]" style="text-align: center;">
+                    <span ng-switch-default class="glyphicon" ng-class="user.is_admin ? 'glyphicon-check' : 'glyphicon-unchecked'"></span>
+                    <input ng-switch-when="edit" ng-model="user.is_admin" type="checkbox">
+                </td>
+
+                <td ng-switch="mode[$index]" style="text-align: center;">
+                    <span ng-switch-default class="glyphicon" ng-class="user.is_contractor ? 'glyphicon-check' : 'glyphicon-unchecked'"></span>
+                    <input ng-switch-when="edit" ng-model="user.is_contractor" type="checkbox">
+                </td>
+
+                <td ng-switch="mode[$index]" style="text-align: center;">
+                    <span ng-switch-default class="glyphicon" ng-class="user.is_creator ? 'glyphicon-check' : 'glyphicon-unchecked'"></span>
+                    <input ng-switch-when="edit" ng-model="user.is_creator" type="checkbox">
+                </td>
+
+                <td ng-switch="mode[$index]" style="text-align: center;">
+                    <button ng-switch-default ng-click="edit(user, $index)" class="btn btn-primary">Edytuj&nbsp;<span class="glyphicon glyphicon-edit"></span></button>
+                    <button ng-switch-when="edit" ng-click="save(user, $index)" class="btn btn-success">Zapisz&nbsp;<span class="glyphicon glyphicon-edit"></span></button>
+
+                </td>
+                <td style="text-align: center;">
+                    <button ng-click="delete(user)" class="btn btn-danger">Usuń&nbsp;<span class="glyphicon glyphicon-remove"></span></button>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="8">
+                    <button ng-click="add()" class="btn btn-success">Dodaj&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

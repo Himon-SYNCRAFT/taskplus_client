@@ -1,5 +1,13 @@
 /* app css stylesheet */
 
+body {
+    font-family: 'Cabin', sans-serif;
+}
+
+button {
+    width: 100%;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -27,4 +35,18 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+table.users-table {
+    table-layout: fixed;
+    font-size: 16px;
+}
+
+table.users-table tbody tr td,
+table.users-table tbody tr th {
+    vertical-align: middle;
+}
+
+table.users-table input {
+    width: 100%;
 }
