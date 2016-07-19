@@ -37,16 +37,22 @@ button {
   padding: 0;
 }
 
-table.users-table {
-    table-layout: fixed;
+table.sc-table,
+table.sc-table button {
     font-size: 16px;
 }
 
-table.users-table tbody tr td,
-table.users-table tbody tr th {
+table.sc-table {
+    table-layout: fixed;
+}
+
+table.sc-table tbody tr td,
+table.sc-table tbody tr th {
     vertical-align: middle;
 }
 
-table.users-table input {
+table.sc-table input,
+table.sc-table span.glyphicon-check,
+table.sc-table span.glyphicon-unchecked {
     width: 100%;
 }

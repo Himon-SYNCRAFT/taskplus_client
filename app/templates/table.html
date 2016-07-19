@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table table-striped table-bordered sc-table">
+        <thead>
+            <tr>
+                <th ng-repeat="column in columns">{{column}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items" ng-switch="mode[$index]">
+                <td ng-repeat="attribute in attributes">
+                    <span ng-switch-default ng-model="item[attribute.name]" ng-if="attribute.type == 'bool'" class="glyphicon text-center" ng-class="item[attribute.name] ? 'glyphicon-check' : 'glyphicon-unchecked' "></span>
+                    <span ng-switch-default ng-bind="item[attribute.name]" ng-if="attribute.type == 'string'"></span>
+
+                    <input ng-switch-when="edit" ng-model="item[attribute.name]" ng-if="attribute.type == 'bool'" type="checkbox">
+                    <input ng-switch-when="edit" ng-model="item[attribute.name]" ng-if="attribute.type == 'string'" type="text">
+                </td>
+
+                <td class="text-center">
+                    <button ng-switch-default ng-click="edit(item, $index)" class="btn btn-primary">Edytuj&nbsp;<span class="glyphicon glyphicon-edit"></span></button>
+                    <button ng-switch-when="edit" ng-click="save(item, $index)" class="btn btn-success">Zapisz&nbsp;<span class="glyphicon glyphicon-edit"></span></button>
+                </td>
+
+                <td class="text-center">
+                    <button ng-click="delete(item, $index)" class="btn btn-danger">Usuń&nbsp;<span class="glyphicon glyphicon-remove"></span></button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="{{attributes.length + 2}}">
+                    <button ng-click="add()" class="btn btn-success">Dodaj&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
